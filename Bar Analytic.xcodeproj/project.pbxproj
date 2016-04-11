@@ -53,6 +53,7 @@
 		E00021AD1CB5B02300F3206B /* AddToInventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToInventoryViewController.swift; sourceTree = "<group>"; };
 		E00021AF1CB5DE5F00F3206B /* ListProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListProductTableViewController.swift; sourceTree = "<group>"; };
 		E00021B11CB5EBBE00F3206B /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
+		E00021B31CB6F93B00F3206B /* BarCoreData 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "BarCoreData 2.xcdatamodel"; sourceTree = "<group>"; };
 		E00156C41CB2ED1100BE57C2 /* SidebarMenu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SidebarMenu-Bridging-Header.h"; sourceTree = "<group>"; };
 		E00156C51CB2ED1200BE57C2 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		E00156C61CB2ED1200BE57C2 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -515,6 +516,7 @@
 		E00021941CB5892700F3206B /* BarCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E00021B31CB6F93B00F3206B /* BarCoreData 2.xcdatamodel */,
 				E00021951CB5892700F3206B /* BarCoreData.xcdatamodel */,
 			);
 			currentVersion = E00021951CB5892700F3206B /* BarCoreData.xcdatamodel */;
