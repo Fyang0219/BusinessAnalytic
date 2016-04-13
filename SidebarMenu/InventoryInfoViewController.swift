@@ -16,10 +16,6 @@ class InventoryInfoViewController: UIViewController {
 
     @IBAction func setupInventory(sender: AnyObject) {
         
-        
-        
-        
-        
     }
     
     override func viewDidLoad() {
@@ -38,7 +34,8 @@ class InventoryInfoViewController: UIViewController {
         
         //setup request for entity
         let request = NSFetchRequest(entityName: "Inventory")
-        
+//        let request = NSFetchRequest(entityName: "Product")
+
         //request.predicate = NSPredicate(format: "product = %@", "test1")              //search the database username = fei
         
         request.returnsObjectsAsFaults = false
@@ -51,13 +48,9 @@ class InventoryInfoViewController: UIViewController {
                 
                 for result in results as! [NSManagedObject]{
                     
-                    if let productname = result.valueForKey("productname") as? String {
-                        
-                        
+                    if let productname = result.valueForKey("name") as? String {
                         print(productname)
-                        
-                        
-                        
+
                     }
                     
                 }

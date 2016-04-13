@@ -18,5 +18,4 @@ extension Inventory {
     @NSManaged var price: NSNumber?
     @NSManaged var amount: NSNumber?
     @NSManaged var date: NSDate?
-
 }

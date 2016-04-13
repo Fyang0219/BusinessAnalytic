@@ -36,10 +36,7 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
         // save data to core data
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext
-        
-        
-        
-        
+
         //get JSON data from Beer API
         let url = NSURL(string: "http://ontariobeerapi.ca/products/")!
         let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
@@ -67,8 +64,6 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
                             if results.count > 0 {
                             
                                 for result in results {
-                                    
-                                    
                                     
                                     context.deleteObject(result as! NSManagedObject)
                                 
@@ -107,14 +102,14 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
                         let fid = item["product_id"] as? Int
                         let fsize = item["size"] as? String
                         let funit = self.findUnit(fsize!)
-                        
+                        let image_Url = item["image_url"] as? String
                         if let newProduct: NSManagedObject = NSEntityDescription.insertNewObjectForEntityForName("Product", inManagedObjectContext: context) {
                             
                             newProduct.setValue(fname, forKey: "name")
                             newProduct.setValue(fprice, forKey: "price")
                             newProduct.setValue(fid, forKey: "id")
                             newProduct.setValue(funit, forKey: "unit")
-                            
+                            newProduct.setValue(image_Url, forKey: "image_url")
                         }
                         
                         
