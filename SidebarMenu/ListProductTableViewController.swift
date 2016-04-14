@@ -49,12 +49,17 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         
         
-         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem()
         searchResults = NSMutableArray();
         productArray = NSMutableArray()
         
         productArray = fetchDataProductCoreData()
         print(productArray.count)
+        
+        self.navigationItem.titleView = self.searchBar
+        
+        
+       
         
         /*
         searchController.searchResultsUpdater = self
@@ -70,6 +75,8 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // fetch datga from core data entity product
     func fetchDataProductCoreData() -> NSMutableArray {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -97,10 +104,12 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
                         dict .setValue(result.valueForKey("name") as? String, forKey: "name")
                         dict .setValue(price, forKey: "price")
                         dict .setValue(result.valueForKey("unit") as? String, forKey: "unit")
-                        dict.setValue(result.valueForKey("image_url") as? String, forKey: "image_url")
+                        dict .setValue(result.valueForKey("image_url") as? String, forKey: "image_url")
+                        
+                        
                         array.addObject(dict)
                        
-                        print(productname)
+                        print(dict)
                         
                         
                         
@@ -151,37 +160,44 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
             }
         }
         
-        let lbl_Name:UILabel = UILabel.init(frame: CGRectMake(60, 0, self.view.frame.size.width - 60, 21))
-        let lbl_Price:UILabel = UILabel.init(frame: CGRectMake(60, 21, self.view.frame.size.width - 60, 21))
-        let lbl_Unit:UILabel = UILabel.init(frame: CGRectMake(60, 42, self.view.frame.size.width - 60, 21))
-        let imgView_Product:UIImageView = UIImageView.init(frame: CGRectMake(0, 0, 50, 50))
-
+        let lbl_Name:UILabel = UILabel.init(frame: CGRectMake(101, 0, self.view.frame.size.width - 60, 21))
+        let lbl_Price:UILabel = UILabel.init(frame: CGRectMake(101, 25, self.view.frame.size.width - 60, 21))
+        let lbl_Unit:UILabel = UILabel.init(frame: CGRectMake(101, 50, self.view.frame.size.width - 60, 21))
+        let imgView_Product:UIImageView = UIImageView.init(frame: CGRectMake(0, 0, 100, 100))
+        var url = String()
+        
+        
         if flagForResult == true
         {
-            lbl_Name.text = searchResults.objectAtIndex(indexPath.row).valueForKey("name") as? String
+            lbl_Name.text =  searchResults.objectAtIndex(indexPath.row).valueForKey("name") as? String
             lbl_Price.text = searchResults.objectAtIndex(indexPath.row).valueForKey("price") as? String
             lbl_Unit.text = searchResults.objectAtIndex(indexPath.row).valueForKey("unit") as? String
+            url = searchResults.objectAtIndex(indexPath.row).valueForKey("image_url") as! String
         }
         else
         {
             lbl_Name.text = productArray.objectAtIndex(indexPath.row).valueForKey("name") as? String
             lbl_Price.text = productArray.objectAtIndex(indexPath.row).valueForKey("price") as? String
             lbl_Unit.text = productArray.objectAtIndex(indexPath.row).valueForKey("unit") as? String
+            url = productArray.objectAtIndex(indexPath.row).valueForKey("image_url") as! String
         }
-        let image_url = productArray.objectAtIndex(indexPath.row).valueForKey("image_url") as? String
         
-        if let str = image_url {
-            let url = NSURL(string: str as String)
+        
+        let image_url = url
+        //let image_url = productArray.objectAtIndex(indexPath.row).valueForKey("image_url") as? String
+        
+        //if image_url  {
+            let iurl = NSURL(string: image_url as String)
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-                let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+                let data = NSData(contentsOfURL: iurl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
                 dispatch_async(dispatch_get_main_queue(), {
                     if data != nil {
                         imgView_Product.image = UIImage(data: data!)
                     }
                 });
             }
-        }
+        //}
         
         cell.contentView.addSubview(lbl_Name)
         cell.contentView.addSubview(lbl_Price)
@@ -192,6 +208,9 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // if a cell is selcted dismiss keyboard
+        searchBar.resignFirstResponder()
         
         // save data to core data
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -303,6 +322,8 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        
+        // reload table view
         obj_TableView.reloadData()
         self.resignFirstResponder()
     }
@@ -318,6 +339,8 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
             obj_TableView.reloadData()
         }
     }
+    
+    
     
    /* - (IBAction)searchCancelButtonClicked:(id)sender
     {

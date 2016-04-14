@@ -23,7 +23,9 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        print("inventory view is loaded")
         // Do any additional setup after loading the view.
         
         if self.revealViewController() != nil {
@@ -152,9 +154,9 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
     // find unit in JSON data process
     func findUnit(largeString: String)  -> String {
         
-        let a = "bottle"
-        let b = "keg"
-        let c = "can"
+        let a = "Bottle"
+        let b = "Keg"
+        let c = "Can"
         
         if largeString.lowercaseString.rangeOfString("bottle") != nil {
             

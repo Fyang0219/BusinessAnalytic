@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -319,7 +319,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHO-uu-C6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="gGL-Yg-g6J">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" id="gGL-Yg-g6J">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </mapView>
@@ -586,7 +586,7 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nh-hX-w0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="V4g-lR-WU7">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" id="V4g-lR-WU7">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </mapView>
@@ -707,17 +707,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="f22-R4-hna">
-                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="KAO-Oe-ygU" id="twe-7h-6Le"/>
-                            </connections>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" rowHeight="37" id="ozS-QO-ghe">
-                                <rect key="frame" x="0.0" y="136" width="375" height="37"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="37"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ozS-QO-ghe" id="byI-fw-WBk">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
@@ -747,19 +739,18 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="obj_TableView" destination="Iyg-aX-cPm" id="91G-nj-RRZ"/>
-                        <outlet property="searchBar" destination="f22-R4-hna" id="wnO-Gs-loe"/>
-                        <outlet property="searchDisplayController" destination="6E5-Lh-NZY" id="cH3-DY-uDJ"/>
+                        <outlet property="searchBar" destination="C4Y-gk-OG1" id="6gw-t6-iGo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fd-xE-hAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="6E5-Lh-NZY">
+                <searchBar contentMode="redraw" id="C4Y-gk-OG1">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                     <connections>
-                        <outlet property="delegate" destination="KAO-Oe-ygU" id="a7L-Z3-khK"/>
-                        <outlet property="searchContentsController" destination="KAO-Oe-ygU" id="Bmf-vk-Ikk"/>
-                        <outlet property="searchResultsDataSource" destination="KAO-Oe-ygU" id="zBL-Vd-Rl2"/>
-                        <outlet property="searchResultsDelegate" destination="KAO-Oe-ygU" id="H6j-ju-nMn"/>
+                        <outlet property="delegate" destination="KAO-Oe-ygU" id="WTY-t7-vsC"/>
                     </connections>
-                </searchDisplayController>
+                </searchBar>
             </objects>
             <point key="canvasLocation" x="5990.5" y="581.5"/>
         </scene>
