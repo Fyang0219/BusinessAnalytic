@@ -373,6 +373,12 @@
                     <view key="view" contentMode="scaleToFill" id="pBu-io-TV5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQJ-Uf-sSG" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="64" width="375" height="296"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reports" id="qmC-sj-PwI">
@@ -381,11 +387,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="menuButton" destination="Eye-Bc-Og3" id="82Q-5O-Zm3"/>
+                        <outlet property="pieCharView" destination="ZQJ-Uf-sSG" id="vuW-80-378"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ne9-ho-vGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="780"/>
+            <point key="canvasLocation" x="2576.5" y="779.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UtP-zp-P1I">
@@ -672,8 +679,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hX-H9-eBn">
-                                <rect key="frame" x="130" y="325" width="115" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hX-H9-eBn">
+                                <rect key="frame" x="130" y="547" width="115" height="30"/>
                                 <state key="normal" title="Set Up Inventory"/>
                                 <connections>
                                     <action selector="setupInventory:" destination="pIG-Ax-4Mg" eventType="touchUpInside" id="2bi-oG-LIx"/>
@@ -681,21 +688,45 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd0-RQ-fwA">
-                                <rect key="frame" x="52" y="113" width="276" height="184"/>
+                                <rect key="frame" x="49" y="108" width="276" height="184"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dl6-Xt-Yel" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="64" width="375" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2hX-H9-eBn" firstAttribute="top" secondItem="Dl6-Xt-Yel" secondAttribute="bottom" constant="28" id="4D1-jb-iNs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dl6-Xt-Yel" secondAttribute="trailing" constant="-20" id="4Id-SD-pJc"/>
+                            <constraint firstItem="Dl6-Xt-Yel" firstAttribute="top" secondItem="26a-hv-it3" secondAttribute="bottom" id="AtY-XQ-7y1"/>
+                            <constraint firstItem="2hX-H9-eBn" firstAttribute="top" secondItem="Dl6-Xt-Yel" secondAttribute="bottom" constant="28" id="QHx-oM-jPk"/>
+                            <constraint firstItem="Dl6-Xt-Yel" firstAttribute="leading" secondItem="G8C-pq-nzZ" secondAttribute="leadingMargin" constant="-20" id="b7f-0s-XfQ"/>
+                            <constraint firstItem="faQ-WI-2YT" firstAttribute="top" secondItem="2hX-H9-eBn" secondAttribute="bottom" constant="41" id="bI9-Ua-UvU"/>
+                            <constraint firstItem="2hX-H9-eBn" firstAttribute="leading" secondItem="G8C-pq-nzZ" secondAttribute="leadingMargin" constant="110" id="tyw-Ui-dWN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2hX-H9-eBn" secondAttribute="trailing" constant="110" id="uLB-4G-L9l"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TZO-TQ-6qo"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="barChartView" destination="Dl6-Xt-Yel" id="u1q-K2-ex3"/>
                         <outlet property="entityLabel" destination="Bd0-RQ-fwA" id="AHg-rf-g8f"/>
+                        <outlet property="searchDisplayController" destination="hrL-GG-nbS" id="5eG-l9-OX1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcU-eh-PAk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="hrL-GG-nbS">
+                    <connections>
+                        <outlet property="delegate" destination="pIG-Ax-4Mg" id="Q2c-XN-LAR"/>
+                        <outlet property="searchContentsController" destination="pIG-Ax-4Mg" id="tuw-li-Aa5"/>
+                        <outlet property="searchResultsDataSource" destination="pIG-Ax-4Mg" id="MIp-zf-hf0"/>
+                        <outlet property="searchResultsDelegate" destination="pIG-Ax-4Mg" id="Cyq-RL-8Dk"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="4462.5" y="581.5"/>
         </scene>
