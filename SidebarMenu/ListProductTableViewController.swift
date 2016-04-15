@@ -263,7 +263,13 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
             newProduct.setValue(productName, forKey: "name")
             newProduct.setValue(productPrice, forKey: "sellPrice")
             newProduct.setValue(productAmount, forKey: "amount")
+            
+            print("product saved")
         }
+        
+        
+        flagArray.replaceObjectAtIndex(flagArray.indexOfObject(true), withObject: false)
+        obj_TableView.reloadData()
     }
     
     /*
@@ -313,6 +319,9 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         
+        flagArray.replaceObjectAtIndex(flagArray.indexOfObject(true), withObject: false)
+        obj_TableView.reloadData()
+        
         //        cancelButtonOutlet.hidden = NO;
     }
     
@@ -340,6 +349,8 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        
+        //flagArray.replaceObjectAtIndex(flagArray.indexOfObject(true), withObject: false)
         obj_TableView.reloadData()
         self.resignFirstResponder()
     }
