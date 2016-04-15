@@ -739,7 +739,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" rowHeight="37" id="ozS-QO-ghe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="37" id="ozS-QO-ghe">
                                 <rect key="frame" x="0.0" y="92" width="375" height="37"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ozS-QO-ghe" id="byI-fw-WBk">
@@ -749,7 +749,6 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="KAO-Oe-ygU" id="b7N-m1-385"/>
                             <outlet property="delegate" destination="KAO-Oe-ygU" id="lCs-fa-oXM"/>
                         </connections>
                     </tableView>
@@ -770,16 +769,16 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="obj_TableView" destination="Iyg-aX-cPm" id="91G-nj-RRZ"/>
-                        <outlet property="searchBar" destination="C4Y-gk-OG1" id="6gw-t6-iGo"/>
+                        <outlet property="searchBar" destination="hoi-ZJ-cMB" id="qAm-zG-YuX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fd-xE-hAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" id="C4Y-gk-OG1">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <searchBar contentMode="redraw" id="hoi-ZJ-cMB">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                    <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <outlet property="delegate" destination="KAO-Oe-ygU" id="WTY-t7-vsC"/>
+                        <outlet property="delegate" destination="30u-kj-Bgl" id="yfM-jX-7mH"/>
                     </connections>
                 </searchBar>
             </objects>

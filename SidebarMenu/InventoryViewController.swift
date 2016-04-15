@@ -70,7 +70,7 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
                                     context.deleteObject(result as! NSManagedObject)
                                 
                                     do {
-                                    
+                                        
                                         try context.save()
                                     
                                     } catch {
@@ -82,11 +82,12 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
       
                                 
                                 }
+                                print("core data is cleared")
                             
                             
                             } else {
                                 
-                                print("entity is empty")
+                                print("entity is already empty")
                             }
                         
                         }catch {
