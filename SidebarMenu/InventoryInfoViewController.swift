@@ -8,24 +8,30 @@
 
 import UIKit
 import CoreData
+import Charts
 
 class InventoryInfoViewController: UIViewController {
     
+    @IBOutlet weak var barChartView: BarChartView!
     
     @IBOutlet weak var entityLabel: UILabel!
 
     @IBAction func setupInventory(sender: AnyObject) {
         
-        
-        
-        
-        
     }
+    
+    var months: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        let months = ["jan","feb", "march", "Apr","may", "june"]
+        let unitsSold = [20.0, 10.1, 5.4, 6.6, 7.0, 17.0]
+        
+        setChart(months, values: unitsSold)
         
         //hide label and button
         entityLabel.hidden = true
@@ -38,7 +44,8 @@ class InventoryInfoViewController: UIViewController {
         
         //setup request for entity
         let request = NSFetchRequest(entityName: "Inventory")
-        
+        //let request = NSFetchRequest(entityName: "Product")
+
         //request.predicate = NSPredicate(format: "product = %@", "test1")              //search the database username = fei
         
         request.returnsObjectsAsFaults = false
@@ -51,13 +58,9 @@ class InventoryInfoViewController: UIViewController {
                 
                 for result in results as! [NSManagedObject]{
                     
-                    if let productname = result.valueForKey("productname") as? String {
-                        
-                        
+                    if let productname = result.valueForKey("name") as? String {
                         print(productname)
-                        
-                        
-                        
+
                     }
                     
                 }
@@ -83,7 +86,28 @@ class InventoryInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    func setChart(dataPoints: [String], values: [Double]) {
+        
+        var dataEntires: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            
+            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            dataEntires.append(dataEntry)
+            
+        }
+        
+        let chartDataSet = BarChartDataSet(yVals: dataEntires, label: "Units Sold")
+        let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
+        barChartView.data = chartData
+        
+        
+        
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 

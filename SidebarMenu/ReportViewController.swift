@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import CoreData
+import Charts
 
 class ReportViewController: UIViewController {
+    
+    var inventoryNames: NSMutableArray = []
+    var inventorySalesAmount: NSMutableArray = []
+    
+    
+    @IBOutlet weak var pieCharView: PieChartView!
+    
+    
     @IBOutlet weak var menuButton:UIBarButtonItem!
 
     override func viewDidLoad() {
@@ -28,7 +38,50 @@ class ReportViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func getInventoryData () {
+        
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDelegate.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Inventory")
+        
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            
+            let results = try context.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                
+                for result in results as! [NSManagedObject]{
+                    
+                    if let productName = result.valueForKey("name") {
+                        
+                        inventoryNames.addObject(productName)
+                        
+                    }
+                    
+                    
+                    
+                }
+                
+                
+                
+            } else {
+                
+                print("Inventory is Empty")
+            }
+            
+            
+            
+        } catch {
+            
+            print("something has happend while reading eneity data")
+        
+        }
+        
+        
+    }
     /*
     // MARK: - Navigation
 
