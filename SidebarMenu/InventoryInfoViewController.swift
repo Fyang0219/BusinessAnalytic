@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 import Charts
 
-
-
 class InventoryInfoViewController: UIViewController {
     
     @IBOutlet weak var barChartView: BarChartView!
