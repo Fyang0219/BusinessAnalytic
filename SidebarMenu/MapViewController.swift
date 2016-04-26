@@ -163,7 +163,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     // turn json data object into NSArray
                     let jsonResults = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers) as! NSArray
                     print(jsonResults.count)
-                                        
+                    
                     for (var i = 0; i < jsonResults.count; i++) {
                         
                         let latitude : String = jsonResults.objectAtIndex(i).valueForKey("latitude") as! String

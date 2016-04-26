@@ -13,19 +13,14 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
-    
-    
     var managedObjectContext: NSManagedObjectContext? = nil
     
     
     var productArray = [String]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        print("inventory view is loaded")
+
         // Do any additional setup after loading the view.
         
         if self.revealViewController() != nil {
@@ -34,6 +29,11 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        for item in self.tabBar.items! as [UITabBarItem]
+        {
+            item.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState:UIControlState.Selected)
+            item.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(15.0), NSForegroundColorAttributeName:UIColor(red: 142.0/255.0, green: 195.0/255.0, blue: 252.0/255.0, alpha: 1.0)], forState: UIControlState.Normal)
+        }
         
         // save data to core data
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -70,7 +70,7 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
                                     context.deleteObject(result as! NSManagedObject)
                                 
                                     do {
-                                        
+                                    
                                         try context.save()
                                     
                                     } catch {
@@ -82,12 +82,11 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
       
                                 
                                 }
-                                print("core data is cleared")
                             
                             
                             } else {
                                 
-                                print("entity is already empty")
+                                print("entity is empty")
                             }
                         
                         }catch {
@@ -155,9 +154,9 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
     // find unit in JSON data process
     func findUnit(largeString: String)  -> String {
         
-        let a = "Bottle"
-        let b = "Keg"
-        let c = "Can"
+        let a = "bottle"
+        let b = "keg"
+        let c = "can"
         
         if largeString.lowercaseString.rangeOfString("bottle") != nil {
             
