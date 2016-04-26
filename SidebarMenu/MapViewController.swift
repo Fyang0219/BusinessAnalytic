@@ -19,7 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var mapview: MKMapView!
     
     let locationManager = CLLocationManager()
-    
+
     @IBAction func zoomToCurrentLocation(sender: AnyObject) {
         
         locationManager.delegate = self
@@ -36,12 +36,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
   
-    
-    
-    
-    
-  
-    
     func mapTypeChanged(segControl: UISegmentedControl) {
         switch segControl.selectedSegmentIndex {
         case 0:
@@ -96,6 +90,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         mapview.setRegion(region, animated: true)
         
+        let anotation = MKPointAnnotation()
+        anotation.coordinate = location
+        anotation.title = "The Location"
+        anotation.subtitle = "This is the location !!!"
+        mapview.addAnnotation(anotation)
+        
         let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
@@ -115,7 +115,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         leadingConstraint.active = true
         trailingConstraint.active = true
         
-        
+        getAllStores();
         
         locationManager.requestWhenInUseAuthorization()
     
@@ -124,5 +124,71 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print("MapViewController loaded its view.")
     }
     
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "MyPin"
+        
+        if annotation.isKindOfClass(MKUserLocation) {
+            return nil
+        }
+        
+        let detailButton: UIButton = UIButton(type: UIButtonType.DetailDisclosure)
+        
+        // Reuse the annotation if possible
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+        
+        if annotationView == nil
+        {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+            annotationView!.canShowCallout = true
+            annotationView!.image = UIImage(named: "annotation.png")
+            annotationView!.rightCalloutAccessoryView = detailButton
+        }
+        else
+        {
+            annotationView!.annotation = annotation
+        }
+        
+        return annotationView
+    }
+    
+    func getAllStores () -> Void {
+        //get JSON data from Beer API
+        let url = NSURL(string: "http://ontariobeerapi.ca/stores/")!
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
+            
+            if let urlContent = data {
+                
+                do {
+                    
+                    // turn json data object into NSArray
+                    let jsonResults = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+                    print(jsonResults.count)
+                                        
+                    for (var i = 0; i < jsonResults.count; i++) {
+                        
+                        let latitude : String = jsonResults.objectAtIndex(i).valueForKey("latitude") as! String
+                        let longitude : String = jsonResults.objectAtIndex(i).valueForKey("longitude") as! String
+                        
+                        var newCoord:CLLocationCoordinate2D = CLLocationCoordinate2D()
+                        newCoord.latitude = (latitude as NSString).doubleValue
+                        newCoord.longitude = (longitude as NSString).doubleValue
+
+                        let newAnotation = MKPointAnnotation()
+                        newAnotation.coordinate = newCoord
+                        newAnotation.title = jsonResults.objectAtIndex(i).valueForKey("name") as? String
+                        newAnotation.subtitle = jsonResults.objectAtIndex(i).valueForKey("address") as? String
+                        self.mapview.addAnnotation(newAnotation)
+                
+                    }
+                } catch {
+                    
+                    print("error while loading json data")
+                    print(error)
+                }
+            }
+        }
+        
+        task.resume()
+    }
     
 }
