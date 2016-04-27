@@ -3,7 +3,7 @@
 
 
 
-<Strong>Please follow instruction in here https://github.com/danielgindi/Charts to install charts frameword after you download project.</Strong>
+<Strong>Please follow instruction in here https://github.com/danielgindi/Charts to install charts frameword after you download the project.</Strong>
 
 </br>
 </br>
