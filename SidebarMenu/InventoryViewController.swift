@@ -15,7 +15,6 @@ class InventoryViewController: UITabBarController, NSFetchedResultsControllerDel
     
     var managedObjectContext: NSManagedObjectContext? = nil
     
-    
     var productArray = [String]()
     
     override func viewDidLoad() {

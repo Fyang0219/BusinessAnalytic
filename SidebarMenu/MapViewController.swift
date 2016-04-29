@@ -164,7 +164,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     let jsonResults = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers) as! NSArray
                     print(jsonResults.count)
                     
-                    for (var i = 0; i < jsonResults.count; i++) {
+                    for i in 0..<jsonResults.count {
                         
                         let latitude : String = jsonResults.objectAtIndex(i).valueForKey("latitude") as! String
                         let longitude : String = jsonResults.objectAtIndex(i).valueForKey("longitude") as! String

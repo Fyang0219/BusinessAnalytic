@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5654EB91CD328EF005EE70C /* annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = D5654EB81CD328EF005EE70C /* annotation.png */; };
 		D5DF381D1CCA472F0034B686 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DF38121CCA47140034B686 /* Charts.framework */; };
 		D5DF381E1CCA472F0034B686 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5DF38121CCA47140034B686 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E00020B71CB30A0B00F3206B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E00020B61CB30A0B00F3206B /* Images.xcassets */; };
@@ -95,6 +96,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D5654EB81CD328EF005EE70C /* annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annotation.png; sourceTree = "<group>"; };
 		D5DF380A1CCA47130034B686 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master-2/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
 		E00020B61CB30A0B00F3206B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SidebarMenu/Images.xcassets; sourceTree = "<group>"; };
 		E00021951CB5892700F3206B /* BarCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BarCoreData.xcdatamodel; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 		F47029F31A7F27DB00E30A3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D5654EB81CD328EF005EE70C /* annotation.png */,
 				F47029F41A7F27DB00E30A3C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -375,6 +378,7 @@
 				F47029FB1A7F27DB00E30A3C /* Main.storyboard in Resources */,
 				E0869B6E1CC13008005ECA59 /* CustomCellListProduct.xib in Resources */,
 				F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */,
+				D5654EB91CD328EF005EE70C /* annotation.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

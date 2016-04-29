@@ -8,6 +8,7 @@
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="decSales" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="febSales" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="janSales" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="julSales" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="junSales" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -27,7 +28,7 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Inventory" positionX="-54" positionY="-9" width="128" height="300"/>
+        <element name="Inventory" positionX="-54" positionY="-9" width="128" height="315"/>
         <element name="Product" positionX="-36" positionY="36" width="128" height="120"/>
     </elements>
 </model>
