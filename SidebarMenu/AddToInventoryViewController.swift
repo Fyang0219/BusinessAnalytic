@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class AddToInventoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var productName: UITextField!
     
@@ -29,14 +29,12 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
 
     var myLabel = ""
     
-    let pickerData = ["Current Month", "Last Month", "Two Month Ago", "Three Month Ago"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        datePicker.dataSource = self
-        datePicker.delegate = self
+        
         
         obj_CollectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "CellIdentifier")
         
@@ -53,21 +51,6 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        testLabel.text = pickerData[row]
-    }
     
     // MARK: - Collection View DataSource & Delegates 
     
@@ -89,9 +72,9 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
         label.textColor = UIColor.whiteColor()
         cell.contentView.addSubview(label)
         
-        let imageView : UIImageView = UIImageView.init(frame: CGRectMake(0, 0, cell.contentView.frame.size.width, cell.contentView.frame.size.height))
+        let imageView : UIImageView = UIImageView.init(frame: CGRectMake(10, 10, cell.contentView.frame.size.width, cell.contentView.frame.size.height))
         imageView.backgroundColor = UIColor.blueColor()
-        cell.contentView.addSubview(imageView)
+        
 
         let image_url = array.objectAtIndex(indexPath.row).valueForKey("image_url") as? String
         
@@ -107,7 +90,7 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
                 });
             }
         }
-        
+        cell.contentView.addSubview(imageView)
         return cell
     }
     
@@ -146,6 +129,7 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
                         dict .setValue(amount, forKey: "amount")
 
                         array.addObject(dict)
+                        print(array)
                     }
                     
                 }

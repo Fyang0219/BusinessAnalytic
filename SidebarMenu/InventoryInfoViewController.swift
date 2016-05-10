@@ -88,8 +88,10 @@ class InventoryInfoViewController: UIViewController {
                         
 //                        arrayData.addObject(dict)
                         
-                        arrayProductName.append(productname)
-                        arrayProductAmount.append(amount)
+                        if !arrayProductName.contains(productname) {
+                            arrayProductName.append(productname)
+                            arrayProductAmount.append(amount)
+                        }
 
                     }
                     

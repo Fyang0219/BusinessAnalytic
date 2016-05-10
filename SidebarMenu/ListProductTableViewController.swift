@@ -206,7 +206,9 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
                 flagArray.replaceObjectAtIndex(i, withObject: false)
             }
         }
+        print(flagArray)
         obj_TableView.reloadData()
+        
     }
     
     func addProductToInventory(let sender:UIButton) {
