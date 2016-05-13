@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D512050F1CE46233004EE224 /* UpdateInventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D512050E1CE46233004EE224 /* UpdateInventoryTableViewController.swift */; };
 		D5654EB91CD328EF005EE70C /* annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = D5654EB81CD328EF005EE70C /* annotation.png */; };
 		D5DF381D1CCA472F0034B686 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DF38121CCA47140034B686 /* Charts.framework */; };
 		D5DF381E1CCA472F0034B686 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5DF38121CCA47140034B686 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DC898E5B10958A99BBA81D53 /* libPods-Bar Analytic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF67430B0FAE8E61AB664B31 /* libPods-Bar Analytic.a */; };
 		E00020B71CB30A0B00F3206B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E00020B61CB30A0B00F3206B /* Images.xcassets */; };
 		E00021961CB5892700F3206B /* BarCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E00021941CB5892700F3206B /* BarCoreData.xcdatamodeld */; };
 		E000219F1CB58A9900F3206B /* Inventory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E000219D1CB58A9900F3206B /* Inventory+CoreDataProperties.swift */; };
@@ -96,6 +98,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2CD09A813F6F5BFB3E9DFD39 /* Pods-Bar Analytic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bar Analytic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bar Analytic/Pods-Bar Analytic.release.xcconfig"; sourceTree = "<group>"; };
+		421B6F0607448FCE428B7473 /* Pods-Bar Analytic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bar Analytic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bar Analytic/Pods-Bar Analytic.debug.xcconfig"; sourceTree = "<group>"; };
+		D512050E1CE46233004EE224 /* UpdateInventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInventoryTableViewController.swift; sourceTree = "<group>"; };
 		D5654EB81CD328EF005EE70C /* annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annotation.png; sourceTree = "<group>"; };
 		D5DF380A1CCA47130034B686 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master-2/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
 		E00020B61CB30A0B00F3206B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SidebarMenu/Images.xcassets; sourceTree = "<group>"; };
@@ -115,6 +120,7 @@
 		E00156C61CB2ED1200BE57C2 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		E0869B6B1CC13008005ECA59 /* CustomCellListProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellListProduct.swift; sourceTree = "<group>"; };
 		E0869B6C1CC13008005ECA59 /* CustomCellListProduct.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellListProduct.xib; sourceTree = "<group>"; };
+		EF67430B0FAE8E61AB664B31 /* libPods-Bar Analytic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bar Analytic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47029F01A7F27DB00E30A3C /* Bar Analytic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bar Analytic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47029F41A7F27DB00E30A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47029F51A7F27DB00E30A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 			files = (
 				F4702A161A7F342F00E30A3C /* MapKit.framework in Frameworks */,
 				D5DF381D1CCA472F0034B686 /* Charts.framework in Frameworks */,
+				DC898E5B10958A99BBA81D53 /* libPods-Bar Analytic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +158,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87AC7064396E3062E35C8160 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF67430B0FAE8E61AB664B31 /* libPods-Bar Analytic.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D5DF380B1CCA47130034B686 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +175,15 @@
 				D5DF38181CCA47140034B686 /* ChartsTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DA1D2D63E24BDAB844FBF7E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				421B6F0607448FCE428B7473 /* Pods-Bar Analytic.debug.xcconfig */,
+				2CD09A813F6F5BFB3E9DFD39 /* Pods-Bar Analytic.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		E00156C31CB2EC7000BE57C2 /* SWRevealViewController */ = {
@@ -177,6 +201,8 @@
 				F47029F21A7F27DB00E30A3C /* BarAnalytic */,
 				F4702A081A7F27DC00E30A3C /* SidebarMenuTests */,
 				F47029F11A7F27DB00E30A3C /* Products */,
+				DA1D2D63E24BDAB844FBF7E6 /* Pods */,
+				87AC7064396E3062E35C8160 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,6 +243,7 @@
 				E00021A91CB5AAD400F3206B /* InventoryViewController.swift */,
 				E00021AB1CB5B00B00F3206B /* InventoryInfoViewController.swift */,
 				E00021AD1CB5B02300F3206B /* AddToInventoryViewController.swift */,
+				D512050E1CE46233004EE224 /* UpdateInventoryTableViewController.swift */,
 				E00021941CB5892700F3206B /* BarCoreData.xcdatamodeld */,
 			);
 			name = BarAnalytic;
@@ -256,10 +283,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4702A0F1A7F27DC00E30A3C /* Build configuration list for PBXNativeTarget "Bar Analytic" */;
 			buildPhases = (
+				CE2E38DB1284E99C6F3D9870 /* Check Pods Manifest.lock */,
 				F47029EC1A7F27DB00E30A3C /* Sources */,
 				F47029ED1A7F27DB00E30A3C /* Frameworks */,
 				F47029EE1A7F27DB00E30A3C /* Resources */,
 				D5DF38211CCA472F0034B686 /* Embed Frameworks */,
+				F344C5E4C8EC3F003200AD90 /* Embed Pods Frameworks */,
+				15AE533F20BFE62E68B8BF27 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -391,6 +421,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		15AE533F20BFE62E68B8BF27 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bar Analytic/Pods-Bar Analytic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE2E38DB1284E99C6F3D9870 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F344C5E4C8EC3F003200AD90 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bar Analytic/Pods-Bar Analytic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F47029EC1A7F27DB00E30A3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -401,6 +479,7 @@
 				E00021AC1CB5B00B00F3206B /* InventoryInfoViewController.swift in Sources */,
 				E00021B01CB5DE5F00F3206B /* ListProductTableViewController.swift in Sources */,
 				E00021B21CB5EBBE00F3206B /* TestTableViewController.swift in Sources */,
+				D512050F1CE46233004EE224 /* UpdateInventoryTableViewController.swift in Sources */,
 				E000219F1CB58A9900F3206B /* Inventory+CoreDataProperties.swift in Sources */,
 				E00021A81CB5A9E600F3206B /* NewProductViewController.swift in Sources */,
 				E00156C71CB2ED1200BE57C2 /* SWRevealViewController.m in Sources */,
@@ -540,6 +619,7 @@
 		};
 		F4702A101A7F27DC00E30A3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 421B6F0607448FCE428B7473 /* Pods-Bar Analytic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -558,6 +638,7 @@
 		};
 		F4702A111A7F27DC00E30A3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CD09A813F6F5BFB3E9DFD39 /* Pods-Bar Analytic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

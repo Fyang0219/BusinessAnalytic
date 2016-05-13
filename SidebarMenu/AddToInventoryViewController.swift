@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     @IBOutlet weak var productName: UITextField!
     
     @IBOutlet weak var datePicker: UIPickerView!
@@ -26,14 +26,14 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet var obj_CollectionView: UICollectionView!
     
     var array:NSMutableArray = []
-
+    
     var myLabel = ""
     
     let pickerData = ["Current Month", "Last Month", "Two Month Ago", "Three Month Ago"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         datePicker.dataSource = self
         datePicker.delegate = self
@@ -47,7 +47,7 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
         array = NSMutableArray()
         array = fetchDataProductCoreData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,7 +69,7 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
         testLabel.text = pickerData[row]
     }
     
-    // MARK: - Collection View DataSource & Delegates 
+    // MARK: - Collection View DataSource & Delegates
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return array.count
@@ -92,20 +92,17 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
         let imageView : UIImageView = UIImageView.init(frame: CGRectMake(0, 0, cell.contentView.frame.size.width, cell.contentView.frame.size.height))
         imageView.backgroundColor = UIColor.blueColor()
         cell.contentView.addSubview(imageView)
-
+        
         let image_url = array.objectAtIndex(indexPath.row).valueForKey("image_url") as? String
         
         if let str = image_url {
             let url = NSURL(string: str as String)
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-                let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-                dispatch_async(dispatch_get_main_queue(), {
-                    if data != nil {
-                        imageView.image = UIImage(data: data!)
-                    }
-                });
-            }
+            let request : NSURLRequest = NSURLRequest(URL: url!)
+            
+            imageView.setImageWithURLRequest(request, placeholderImage: nil, success: {(request: NSURLRequest, response: NSHTTPURLResponse?, image: UIImage) -> Void in
+                imageView.image = image
+                }, failure: nil)
         }
         
         return cell
@@ -118,7 +115,7 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
     func fetchDataProductCoreData() -> NSMutableArray {
         let request = NSFetchRequest(entityName: "Inventory")
         
-
+        
         //access core data
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -138,19 +135,19 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
                         print(productname)
                         let price = String(result.valueForKey("sellPrice") as! NSNumber)
                         let amount = String(result.valueForKey("amount") as! Int)
-
+                        
                         let dict = NSMutableDictionary()
                         dict .setValue(result.valueForKey("name") as? String, forKey: "name")
                         dict.setValue(result.valueForKey("image_url") as? String, forKey: "image_url")
                         dict .setValue(price, forKey: "sellPrice")
                         dict .setValue(amount, forKey: "amount")
-
+                        
                         array.addObject(dict)
                     }
                     
                 }
                 obj_CollectionView.reloadData()
-
+                
             } else {
                 
             }
@@ -160,14 +157,14 @@ class AddToInventoryViewController: UIViewController, UIPickerViewDataSource, UI
             print("something happend")
             
         }
-     
+        
         return array
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let cell : UICollectionViewCell! = collectionView.cellForItemAtIndexPath(indexPath)! as UICollectionViewCell
-
+        
         viewOutlet_ProductInfo.hidden = false
         lblOutlet_ProductName.text = array.objectAtIndex(indexPath.row).valueForKey("name") as? String
         lblOutlet_ProductAmount.text = array.objectAtIndex(indexPath.row).valueForKey("amount") as? String

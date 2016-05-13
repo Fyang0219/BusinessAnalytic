@@ -725,7 +725,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -800,10 +800,10 @@
             </objects>
             <point key="canvasLocation" x="4462.5" y="581.5"/>
         </scene>
-        <!--Title-->
+        <!--ListProductTableViewController-->
         <scene sceneID="0Ti-gJ-l8A">
             <objects>
-                <tableViewController id="KAO-Oe-ygU" customClass="ListProductTableViewController" customModule="Bar_Analytic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="ListProductTableViewController" id="KAO-Oe-ygU" customClass="ListProductTableViewController" customModule="Bar_Analytic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="Iyg-aX-cPm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -907,30 +907,6 @@
             </objects>
             <point key="canvasLocation" x="4999.5" y="1802.5"/>
         </scene>
-        <!--Update Inventory-->
-        <scene sceneID="d3P-1G-Q0q">
-            <objects>
-                <viewController id="cWS-TI-Lf1" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VEB-UX-zpZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="v6X-Qb-Mxj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uq1-DC-959">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Update Inventory" id="ASi-rk-yRj">
-                        <inset key="imageInsets" minX="11" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
-                    </tabBarItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sqh-qP-c1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3540.5" y="2512.5"/>
-        </scene>
         <!--Title-->
         <scene sceneID="vD6-bH-5wg">
             <objects>
@@ -998,7 +974,7 @@
                         <outlet property="menuButton" destination="wEx-xp-nMC" id="ygk-PA-ILf"/>
                         <segue destination="gTI-ir-r0p" kind="relationship" relationship="viewControllers" id="NrK-qL-n2p"/>
                         <segue destination="ZJe-zC-LTX" kind="relationship" relationship="viewControllers" id="vPp-33-kOl"/>
-                        <segue destination="cWS-TI-Lf1" kind="relationship" relationship="viewControllers" id="HRN-Ho-etj"/>
+                        <segue destination="r0n-ZQ-srK" kind="relationship" relationship="viewControllers" id="9Hd-cV-V1z"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s6s-dh-xSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1043,6 +1019,60 @@
             </objects>
             <point key="canvasLocation" x="1765" y="1589"/>
         </scene>
+        <!--UpdateInventoryTableViewController-->
+        <scene sceneID="bx0-qS-9Kp">
+            <objects>
+                <tableViewController title="UpdateInventoryTableViewController" id="r0n-ZQ-srK" customClass="UpdateInventoryTableViewController" customModule="Bar_Analytic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="SXP-ic-fgP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="dQA-Y2-5qc">
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="r0n-ZQ-srK" id="6Lb-Ry-Ys7"/>
+                            </connections>
+                        </searchBar>
+                        <connections>
+                            <outlet property="dataSource" destination="r0n-ZQ-srK" id="ReP-Pj-a1k"/>
+                            <outlet property="delegate" destination="r0n-ZQ-srK" id="Nbc-jf-DiJ"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Update Inventory" id="78c-oH-4Gf">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="AEw-Vv-sY1">
+                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="6A4-Ql-RDz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IjW-fP-zPH">
+                                <rect key="frame" x="16" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="obj_TableView" destination="SXP-ic-fgP" id="GVh-8G-b2k"/>
+                        <outlet property="searchBar" destination="dQA-Y2-5qc" id="txX-mE-0mF"/>
+                        <outlet property="searchDisplayController" destination="6E5-Lh-NZY" id="P4w-ux-O1N"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggy-Gi-hZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="J6f-fN-B7G">
+                    <connections>
+                        <outlet property="delegate" destination="r0n-ZQ-srK" id="eHn-nT-f9l"/>
+                        <outlet property="searchContentsController" destination="r0n-ZQ-srK" id="Ybb-PC-scQ"/>
+                        <outlet property="searchResultsDataSource" destination="r0n-ZQ-srK" id="AGf-Tv-yyz"/>
+                        <outlet property="searchResultsDelegate" destination="r0n-ZQ-srK" id="avN-9Y-tSX"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3176.5" y="2527.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar" width="1024" height="1024"/>
@@ -1056,6 +1086,6 @@
         <image name="tag" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tyv-jt-BUR"/>
+        <segue reference="I3i-Bd-2Rg"/>
     </inferredMetricsTieBreakers>
 </document>

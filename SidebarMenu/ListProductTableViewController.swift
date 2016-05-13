@@ -51,7 +51,8 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
         productArray = fetchDataProductCoreData()
         print(productArray.count)
         
-        for (var i = 0; i < productArray.count; i++) {
+        for i in 0..<productArray.count {
+            print(i)
             self.flagArray.addObject(false)
         }
         
@@ -154,17 +155,21 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
             cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? CustomCellListProduct
         }
         
+        let image_url : String?
+        
         if flagForResult == true
         {
             cell.lblOutlet_ProductName.text = searchResults.objectAtIndex(indexPath.row).valueForKey("name") as? String
             cell.lblOutlet_ProductPrice.text = searchResults.objectAtIndex(indexPath.row).valueForKey("price") as? String
             cell.lblOutlet_ProductUnit.text = searchResults.objectAtIndex(indexPath.row).valueForKey("unit") as? String
+            image_url = searchResults.objectAtIndex(indexPath.row).valueForKey("image_url") as? String
         }
         else
         {
             cell.lblOutlet_ProductName.text = productArray.objectAtIndex(indexPath.row).valueForKey("name") as? String
             cell.lblOutlet_ProductPrice.text = productArray.objectAtIndex(indexPath.row).valueForKey("price") as? String
             cell.lblOutlet_ProductUnit.text = productArray.objectAtIndex(indexPath.row).valueForKey("unit") as? String
+            image_url = productArray.objectAtIndex(indexPath.row).valueForKey("image_url") as? String
         }
         
         cell.btnOutlet_Add.addTarget(self, action: "addProductToInventory:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -180,26 +185,21 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
             cell.btnOutlet_Add.hidden = true
         }
         
-        let image_url = productArray.objectAtIndex(indexPath.row).valueForKey("image_url") as? String
-        
         if let str = image_url {
             let url = NSURL(string: str as String)
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-                let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-                dispatch_async(dispatch_get_main_queue(), {
-                    if data != nil {
-                        cell.imgViewOutlet_ProductImage.image = UIImage(data: data!)
-                    }
-                });
-            }
+            let request : NSURLRequest = NSURLRequest(URL: url!)
+            
+            cell.imgViewOutlet_ProductImage.setImageWithURLRequest(request, placeholderImage: nil, success: {(request: NSURLRequest, response: NSHTTPURLResponse?, image: UIImage) -> Void in
+                cell.imgViewOutlet_ProductImage.image = image
+                }, failure: nil)
         }
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        for (var i = 0; i < flagArray.count; i++) {
+        for i in 0..<flagArray.count {
             if i == indexPath.row {
                 flagArray.replaceObjectAtIndex(i, withObject: true)
             } else {
@@ -302,7 +302,7 @@ class ListProductTableViewController: UITableViewController, UISearchBarDelegate
         
         if productArray.count > 0 {
             searchResults.removeAllObjects()
-            for (var i = 0; i < productArray.count; i++) {
+            for i in 0..<productArray.count {
                 let tmp: NSString = (productArray.objectAtIndex(i).valueForKey("name"))! as! NSString
                 let nameRange:NSRange = tmp.rangeOfString(searchText, options:(NSStringCompareOptions.CaseInsensitiveSearch))
                 if nameRange.location != NSNotFound {

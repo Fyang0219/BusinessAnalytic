@@ -49,8 +49,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
-    
-    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         
@@ -58,7 +56,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
         
+
         mapview.setRegion(region, animated: true)
+
+        let anotation = MKPointAnnotation()
+        anotation.coordinate = center
+        anotation.title = "The Location"
+        anotation.subtitle = "This is the location !!!"
+        mapview.addAnnotation(anotation)
+    
         
         locationManager.stopUpdatingLocation()
     }
@@ -74,27 +80,39 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        let latitude:CLLocationDegrees = 40.7
         
-        let longtitude:CLLocationDegrees = -73.9
+        self.locationManager.requestAlwaysAuthorization()
         
-        let latDelta:CLLocationDegrees = 0.01
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
         
-        let lonDelta:CLLocationDegrees = 0.01
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
-        
-        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longtitude)
-        
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-        
-        mapview.setRegion(region, animated: true)
-        
-        let anotation = MKPointAnnotation()
-        anotation.coordinate = location
-        anotation.title = "The Location"
-        anotation.subtitle = "This is the location !!!"
-        mapview.addAnnotation(anotation)
+//        let latitude:CLLocationDegrees = 40.7
+//        
+//        let longtitude:CLLocationDegrees = -73.9
+//        
+//        let latDelta:CLLocationDegrees = 0.01
+//        
+//        let lonDelta:CLLocationDegrees = 0.01
+//        
+//        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+//        
+//        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longtitude)
+//        
+//        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+//        
+//        mapview.setRegion(region, animated: true)
+//        
+//        let anotation = MKPointAnnotation()
+//        anotation.coordinate = location
+//        anotation.title = "The Location"
+//        anotation.subtitle = "This is the location !!!"
+//        mapview.addAnnotation(anotation)
         
         let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
